@@ -46,4 +46,8 @@ export class StoreComponent implements OnInit {
     const numPages = Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.getProductsPerPage())
     return Array(numPages).fill(0).map((v,i) => i + 1);
   }
+
+  highlightCategory(val: string) : boolean {
+    return this.selectedCategory == val;
+  }
 }

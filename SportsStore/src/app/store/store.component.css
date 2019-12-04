@@ -28,3 +28,7 @@
 .page-settings button:first-of-type {
     margin-left: auto;
 }
+
+.mat-list-item--selected {
+    color: #ff4081;
+}
