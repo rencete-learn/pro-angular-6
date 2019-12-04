@@ -13,3 +13,18 @@
 .mat-card-header__price {
     margin: auto 0 auto auto;
 }
+
+.page-settings {
+    margin: 15px 5px 5px 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.page-settings button {
+    min-width: 35px;
+}
+
+.page-settings button:first-of-type {
+    margin-left: auto;
+}
