@@ -1,7 +1,15 @@
-.sidebar {
-    width: 350px;
+.mat-drawer {
+    min-width: 150px;
 }
 
 .mat-drawer-content {
     height: calc(100vh - 64px);
+}
+
+.product-card {
+    margin: 5px;
+}
+
+.mat-card-header__price {
+    margin: auto 0 auto auto;
 }
