@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreComponent } from './store.component';
 import { AngularMaterialModule } from "../angular-material/angular-material.module";
 import { ModelModule } from "../model/model.module";
+import { CounterDirective } from './counter.directive';
 
 @NgModule({
   imports: [
@@ -10,7 +11,7 @@ import { ModelModule } from "../model/model.module";
     AngularMaterialModule,
     ModelModule
   ],
-  declarations: [StoreComponent],
+  declarations: [StoreComponent, CounterDirective],
   exports: [StoreComponent]
 })
 export class StoreModule { }

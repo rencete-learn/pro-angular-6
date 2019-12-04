@@ -37,7 +37,7 @@
         </mat-select>
       </mat-form-field>
       <button mat-raised-button
-        *ngFor="let page of getPages()"
+        *counter="let page of getPageCount()"
         (click)="changePage(page)"
         [color]="page == selectedPage ? 'accent' : ''">{{page}}</button>
     </div>
