@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductRepositoryService } from '../model/product-repository.service';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-store',
@@ -7,6 +8,7 @@ import { ProductRepositoryService } from '../model/product-repository.service';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
+  selectedCategory : string = null;
 
   constructor(private repository : ProductRepositoryService) { }
 
@@ -14,11 +16,14 @@ export class StoreComponent implements OnInit {
   }
 
   getProducts() {
-    return this.repository.getProducts();
+    return this.repository.getProducts(this.selectedCategory);
   }
   
   getCategories() {
     return this.repository.getCategories();
   }
 
+  changeCategory(cat: string) {
+    this.selectedCategory = cat ? cat : null;
+  }
 }
