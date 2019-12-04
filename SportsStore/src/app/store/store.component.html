@@ -1,0 +1,14 @@
+<mat-drawer-container>
+  <mat-drawer class="" opened mode="side" disableClose>
+    <mat-nav-list>
+      <a mat-list-item href="#"> Home </a>
+      <a mat-list-item href="#" *ngFor="let category of getCategories()"> {{category}} </a>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar><span>Products</span></mat-toolbar>
+    <mat-list>
+      <mat-list-item *ngFor="let product of getProducts()"> {{product.name}} </mat-list-item>
+    </mat-list>
+  </mat-drawer-content>
+</mat-drawer-container>

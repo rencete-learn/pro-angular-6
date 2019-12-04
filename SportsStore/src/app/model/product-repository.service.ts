@@ -18,7 +18,7 @@ export class ProductRepositoryService {
   }
 
   getProducts(category: string = null) : Product[] {
-    return this.products.filter(p => p.category == category);
+    return this.products.filter(p => p.category == category || category == null);
   }
 
   getProduct(id: number) : Product {

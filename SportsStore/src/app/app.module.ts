@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AngularMaterialModule } from "./angular-material/angular-material.module";
+import { StoreModule } from "./store/store.module";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
