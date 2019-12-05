@@ -60,7 +60,6 @@ export class StoreComponent implements OnInit {
   }
 
   addProductToCart(product: Product) {
-    console.log(`clicked addToCart ${product}`);
     this.cart.addLineItem(product, 1);
     // Note: use of Router does not require importing of RouterModule
     this.router.navigateByUrl("/cart");

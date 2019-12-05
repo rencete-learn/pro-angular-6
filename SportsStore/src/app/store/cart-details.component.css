@@ -1,0 +1,35 @@
+.table-container {
+    padding: 5px 20px 25px 20px;
+    text-justify: center;
+}
+
+.full-width {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inherit-width {
+    width: inherit;
+}
+
+.center-content {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+button {
+    margin: 0 5px;
+}
+
+h3 {
+    display: inline;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.mat-form-field {
+    padding-right: 24px;
+    min-width: 100px;
+}

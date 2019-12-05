@@ -1,7 +1,7 @@
 <div class="cart-summary-div">
   <span>Your cart: </span>
   <span *ngIf="cart.numProducts > 0; else EmptyText">
-    {{cart.numProducts}} item{{cart.numProducts>1 ? 's' : ''}} {{cart.totalAmount | currency}}
+    {{cart.numProducts}} item{{cart.numProducts>1 ? 's' : ''}} {{cart.totalAmount | currency:"USD":"symbol":"2.2-2"}}
   </span>
   <ng-template #EmptyText><span>(empty)</span></ng-template>
   <button mat-icon-button
