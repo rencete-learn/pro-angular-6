@@ -1,0 +1,10 @@
+<div class="cart-summary-div">
+  <span>Your cart: </span>
+  <span *ngIf="cart.numProducts > 0; else EmptyText">
+    {{cart.numProducts}} item{{cart.numProducts>1 ? 's' : ''}} {{cart.totalAmount | currency}}
+  </span>
+  <ng-template #EmptyText><span>(empty)</span></ng-template>
+  <button mat-icon-button>
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+</div>
