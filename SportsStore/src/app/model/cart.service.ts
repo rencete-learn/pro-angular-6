@@ -3,9 +3,9 @@ import { Product } from './product.model';
 
 @Injectable()
 export class CartService {
-  cartItems: CartLineItem[];
-  numProducts: number = 0;
-  totalAmount: number = 0;
+  public cartItems: CartLineItem[];
+  public numProducts: number = 0;
+  public totalAmount: number = 0;
 
   constructor() {
     this.clearCart();
@@ -49,7 +49,7 @@ export class CartService {
   }
 }
 
-class CartLineItem {
+export class CartLineItem {
   constructor(public product: Product, public qty: number) { }
 
   lineTotal(): number {
