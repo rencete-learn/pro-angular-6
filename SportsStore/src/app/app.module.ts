@@ -9,6 +9,7 @@ import { StoreModule } from "./store/store.module";
 import { StoreComponent } from './store/store.component';
 import { CartDetailsComponent } from './store/cart-details.component';
 import { CheckoutComponent } from './store/checkout.component';
+import { StoreFirstGuardService } from './store-first-guard.service';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,16 @@ import { CheckoutComponent } from './store/checkout.component';
     AngularMaterialModule,
     StoreModule,
     RouterModule.forRoot([
-      { path: "store", component: StoreComponent },
-      { path: "cart", component: CartDetailsComponent },
-      { path: "checkout", component: CheckoutComponent },
+      // Adding canActivate providers, make sure that they are defined in a provider (see below)
+      { path: "store", component: StoreComponent, canActivate: [StoreFirstGuardService] },
+      { path: "cart", component: CartDetailsComponent, canActivate: [StoreFirstGuardService] },
+      { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuardService] },
       { path: "**", redirectTo: "/store" }
     ])
   ],
-  providers: [],
+  providers: [
+    StoreFirstGuardService // Allows URL guard to be injected. Note: there is no error msg but with error, if this is not added
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
