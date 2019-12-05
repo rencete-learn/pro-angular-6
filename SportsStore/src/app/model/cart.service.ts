@@ -7,7 +7,9 @@ export class CartService {
   numProducts: number = 0;
   totalAmount: number = 0;
 
-  constructor() { }
+  constructor() {
+    this.clearCart();
+  }
 
   addLineItem(product: Product, qty: number) {
     const lineItem = this.cartItems.find(p => p.product.id === product.id);
@@ -33,6 +35,11 @@ export class CartService {
       lineItem.qty = qty;
       this.recalculate();
     }
+  }
+
+  clearCart() {
+    this.cartItems = [];
+    this.recalculate();
   }
 
   private recalculate() {
