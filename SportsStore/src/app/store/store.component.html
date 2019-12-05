@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-  <div class="header-div">
+  <div class="flex-row">
     <span>This is SportsStore</span>
-    <app-cart-summary></app-cart-summary>
+    <app-cart-summary class="flex-row__float-right"></app-cart-summary>
   </div>
 </mat-toolbar>
 <mat-drawer-container>
@@ -29,10 +29,16 @@
         </mat-chip-list>
       </mat-card-header>
       <mat-card-content>
-        <p>{{ product.description }}</p>
+        <div class="flex-row">
+          <p>{{ product.description }}</p>
+          <button mat-flat-button color="accent" class="flex-row__float-right"
+            (click)="addProductToCart(product)">
+            Add to cart
+          </button>
+        </div>
       </mat-card-content>
     </mat-card>
-    <div class="page-settings">
+    <div class="page-settings flex-row">
       <mat-form-field>
         <mat-label>Products per page</mat-label>
         <mat-select [(value)]="productsPerPage">

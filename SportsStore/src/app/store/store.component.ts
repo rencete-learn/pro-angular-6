@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductRepositoryService } from '../model/product-repository.service';
-import { isUndefined } from 'util';
+import { CartService } from '../model/cart.service';
+import { Product } from '../model/product.model';
 
 @Component({
   selector: 'app-store',
@@ -12,7 +13,7 @@ export class StoreComponent implements OnInit {
   productsPerPage : string = "4";
   selectedPage : number = 1;
 
-  constructor(private repository : ProductRepositoryService) { }
+  constructor(private repository : ProductRepositoryService, public cart: CartService) { }
 
   ngOnInit() {
   }
@@ -53,5 +54,10 @@ export class StoreComponent implements OnInit {
 
   highlightCategory(val: string) : boolean {
     return this.selectedCategory == val;
+  }
+
+  addProductToCart(product: Product) {
+    console.log(`clicked addToCart ${product}`);
+    this.cart.addLineItem(product, 1);
   }
 }

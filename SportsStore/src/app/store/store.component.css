@@ -17,8 +17,6 @@
 .page-settings {
     margin: 15px 5px 5px 5px;
     padding: 5px;
-    display: flex;
-    align-items: center;
 }
 
 .page-settings button {
@@ -33,12 +31,16 @@
     color: #ff4081;
 }
 
-.header-div {
-    display: flex;
-    align-items: center;
-    width: 100%;
+mat-card-content {
+    margin: 10px 8px;
 }
 
-.header-div app-cart-summary {
+.flex-row {
+    display: flex;
+    width: inherit;
+    align-items: center;
+}
+
+.flex-row__float-right {
     margin-left: auto;
 }
