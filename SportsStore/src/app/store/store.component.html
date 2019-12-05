@@ -7,8 +7,8 @@
 <mat-drawer-container>
   <mat-drawer opened mode="side" disableClose>
     <mat-nav-list>
-      <a mat-list-item href="#" (click)="changeCategory()" [ngClass]="{'mat-list-item--selected': highlightCategory(null)}"> Home </a>
-      <a mat-list-item href="#" *ngFor="let category of getCategories()" (click)="changeCategory(category)" [ngClass]="{'mat-list-item--selected': highlightCategory(category)}">
+      <a mat-list-item (click)="changeCategory()" [ngClass]="{'mat-list-item--selected': highlightCategory(null)}"> Home </a>
+      <a mat-list-item *ngFor="let category of getCategories()" (click)="changeCategory(category)" [ngClass]="{'mat-list-item--selected': highlightCategory(category)}">
         {{ category }}
       </a>
     </mat-nav-list>
