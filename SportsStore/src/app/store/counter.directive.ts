@@ -18,5 +18,9 @@ export class CounterDirective {
 }
 
 class CounterDirectiveContext {
-  constructor(public $implicit: any) { }
+  // $implicit receives the implied variable in the microexpression "let <$implicit> of <variable>"
+  public $implicit: number;
+  constructor(imp: number) { 
+    this.$implicit = imp;
+  }
 }
