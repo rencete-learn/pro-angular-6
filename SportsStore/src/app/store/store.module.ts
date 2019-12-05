@@ -5,6 +5,8 @@ import { AngularMaterialModule } from "../angular-material/angular-material.modu
 import { ModelModule } from "../model/model.module";
 import { CounterDirective } from './counter.directive';
 import { CartSummaryComponent } from './cart-summary.component';
+import { CartDetailsComponent } from './cart-details.component';
+import { CheckoutComponent } from './checkout.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,7 @@ import { CartSummaryComponent } from './cart-summary.component';
     AngularMaterialModule,
     ModelModule
   ],
-  declarations: [StoreComponent, CounterDirective, CartSummaryComponent],
+  declarations: [StoreComponent, CounterDirective, CartSummaryComponent, CartDetailsComponent, CheckoutComponent],
   exports: [StoreComponent]
 })
 export class StoreModule { }
