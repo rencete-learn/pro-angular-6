@@ -23,15 +23,17 @@ export class CartDetailsComponent {
     return of(this.cart.cartItems);
   }
 
-  removeItem(p: Product) {
-    this.cart.removeItem(p.id);
+  removeItem(li: CartLineItem) {
+    this.cart.removeItem(li.product.id);
   }
 
-  updateQty(event: Event, product: Product) {
+  updateQty(event: Event, li: CartLineItem) {
     let newQty = Number((<HTMLInputElement>event.target).value);
-    if (!newQty) {
+    if (!newQty || newQty < 0) {
       newQty = 0;
     }
-    this.cart.updateQty(product, newQty);
+    if(newQty != li.qty) {
+      this.cart.updateQty(li.product, newQty);
+    }
   }
 }
