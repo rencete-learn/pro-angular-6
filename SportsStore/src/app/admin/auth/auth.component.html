@@ -1,0 +1,36 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>Sports Store Admin</span>
+  </mat-toolbar>
+
+  <ng-container *ngIf="errorMessage?.length > 0">
+    <mat-toolbar color="warn" class="error-message-div">
+      <p>{{errorMessage}}</p>
+    </mat-toolbar>
+  </ng-container>
+
+  <div class="auth-form">
+    <form [formGroup]="authForm" (ngSubmit)="authenticate()">
+      <!-- Username -->
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" required>
+        <mat-error *ngIf="authForm.controls.username.invalid">{{getErrorMessage(authForm.controls.username)}}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" required>
+        <mat-error *ngIf="authForm.controls.password.invalid">{{getErrorMessage(authForm.controls.password)}}
+        </mat-error>
+      </mat-form-field>
+
+      <div class='auth-form__buttons-area'>
+        <button mat-raised-button color="" routerLink="/">Go Back</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!authForm.valid">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

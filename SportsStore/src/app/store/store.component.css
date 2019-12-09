@@ -44,3 +44,13 @@ mat-card-content {
 .flex-row__float-right {
     margin-left: auto;
 }
+
+.side-drawer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;;
+}
+
+.side-drawer button {
+    margin-top: 20px;
+}

@@ -25,6 +25,7 @@ import { StoreFirstGuardService } from './store-first-guard.service';
       { path: "store", component: StoreComponent, canActivate: [StoreFirstGuardService] },
       { path: "cart", component: CartDetailsComponent, canActivate: [StoreFirstGuardService] },
       { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuardService] },
+      { path: "admin", loadChildren: "./admin/admin.module#AdminModule", canActivate: [StoreFirstGuardService] },
       { path: "**", redirectTo: "/store" }
     ])
   ],
