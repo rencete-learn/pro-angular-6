@@ -6,6 +6,7 @@ import { Order } from './order.model';
 import { OrderRepositoryService } from './order-repository.service';
 import { RestDatasourceService } from './rest-datasource.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   imports: [HttpClientModule],
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     Order,
     OrderRepositoryService,
     RestDatasourceService,    
-    { provide: StaticDatasourceService, useExisting: RestDatasourceService }
+    { provide: StaticDatasourceService, useExisting: RestDatasourceService },
+    AuthService
   ]
 })
 export class ModelModule { }

@@ -5,11 +5,12 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
+import { AuthGuardService } from './auth-guard.service';
 
 let routing = RouterModule.forChild([
   { path: "auth", component: AuthComponent },
   { path: "main", component: AdminComponent },
-  { path: "**", redirectTo: "auth" }
+  { path: "**", redirectTo: "auth", canActivate: [AuthGuardService] }
 ]);
 
 @NgModule({
@@ -19,6 +20,7 @@ let routing = RouterModule.forChild([
     ReactiveFormsModule,
     routing
   ],
+  providers: [AuthGuardService],
   declarations: [AuthComponent, AdminComponent]
 })
 export class AdminModule { }
