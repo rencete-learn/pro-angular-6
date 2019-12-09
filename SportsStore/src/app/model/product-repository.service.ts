@@ -5,8 +5,8 @@ import { Product } from './product.model';
 
 @Injectable()
 export class ProductRepositoryService {
-  private products : Product[];
-  private categories : string[];
+  private products: Product[] = [];
+  private categories: string[] = [];
 
   constructor(private ds : StaticDatasourceService) { 
     ds.getProducts().subscribe(data => {
