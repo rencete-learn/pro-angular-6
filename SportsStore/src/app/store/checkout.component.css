@@ -1,0 +1,26 @@
+.mat-form-field {
+    display: block;
+}
+
+.order-form {
+    padding: 20px;
+}
+
+.order-form__buttons-area {
+    display: flex;
+    justify-content: center;
+}
+
+.order-form__buttons-area button {
+    margin: 0 5px;
+}
+
+.order-sent-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-sent-div button{
+    margin-top: 10px;
+}
