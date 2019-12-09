@@ -4,14 +4,18 @@ import { ProductRepositoryService } from './product-repository.service';
 import { CartService } from './cart.service';
 import { Order } from './order.model';
 import { OrderRepositoryService } from './order-repository.service';
+import { RestDatasourceService } from './rest-datasource.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
+  imports: [HttpClientModule],
   providers: [
-    StaticDatasourceService,
     ProductRepositoryService,
     CartService,
     Order,
-    OrderRepositoryService
+    OrderRepositoryService,
+    RestDatasourceService,    
+    { provide: StaticDatasourceService, useExisting: RestDatasourceService }
   ]
 })
 export class ModelModule { }
