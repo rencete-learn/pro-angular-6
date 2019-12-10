@@ -1,3 +1,17 @@
-<p>
-  admin works!
-</p>
+<div class="admin-container">
+  <mat-toolbar color="primary">
+    <span>Sports Store</span>
+  </mat-toolbar>
+
+  <mat-drawer-container>
+    <mat-drawer opened mode="side" disableClose class="side-drawer">
+        <button mat-stroked-button color="primary" routerLink="/admin/main/products" routerLinkActive="active">Products</button>
+        <button mat-stroked-button color="primary" routerLink="/admin/main/orders" routerLinkActive="active">Orders</button>
+        <button mat-stroked-button color="accent" (click)="logout()">Logout</button>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-toolbar><p>Placeholder</p></mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
