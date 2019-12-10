@@ -15,19 +15,19 @@ export class RestDatasourceService {
   public authToken: string;
 
   constructor(private http: HttpClient) {
-    this.baseURL = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+    this.baseURL = `${PROTOCOL}://${location.hostname}:${PORT}`;
   }
 
   getProducts() : Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseURL + "products");
+    return this.http.get<Product[]>(`${this.baseURL}/products`);
   }
 
   saveOrder(order: Order) : Observable<Order> {
-    return this.http.post<Order>(this.baseURL + "orders", order);
+    return this.http.post<Order>(`${this.baseURL}/orders`, order);
   }
 
   authenticate(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.baseURL + "login", {
+    return this.http.post<any>(`${this.baseURL}/login`, {
       name: username,
       password: password
     }).pipe(map(resp => {
