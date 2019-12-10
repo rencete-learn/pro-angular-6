@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -34,5 +34,38 @@ export class RestDatasourceService {
       this.authToken = resp.success ? resp.token : null;
       return resp.success;
     }));
+  }
+
+  private getOptions() {
+    return {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer<${this.authToken}>`
+      })
+    };
+  }
+
+  saveProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.baseURL}/products`, product, this.getOptions());
+  }
+
+  updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.baseURL}/products/${product.id}`,
+      product, this.getOptions());
+  }
+
+  deleteProduct(id: number): Observable<Product> {
+    return this.http.delete<Product>(`${this.baseURL}/products/${id}`, this.getOptions());
+  }
+
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.baseURL}/orders`, this.getOptions());
+  }
+
+  deleteOrder(id: number): Observable<Order> {
+    return this.http.delete<Order>(`${this.baseURL}/orders/${id}`, this.getOptions());
+  }
+
+  updateOrder(order: Order): Observable<Order> {
+    return this.http.put<Order>(`${this.baseURL}/orders/${order.id}`, this.getOptions());
   }
 }
