@@ -1,0 +1,18 @@
+.auth-form {
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.auth-form__buttons-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.auth-form__buttons-area button {
+    margin: 10px;
+}
