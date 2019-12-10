@@ -1,0 +1,12 @@
+.full-width {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inherit-width {
+    width: inherit;
+}
+
+.mat-column-buttons button {
+    margin: 0 5px;
+}
