@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/model/auth.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-auth',
@@ -18,7 +19,7 @@ export class AuthComponent {
     password: new FormControl('')
   });
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(private router: Router, private auth: AuthService, private snackBar: MatSnackBar) {}
 
   authenticate() {
     if (this.authForm.valid) {
@@ -27,11 +28,14 @@ export class AuthComponent {
         .subscribe(response => {
           if(response) {
             this.router.navigateByUrl("/admin/main");
+          } else {
+            this.errorMessage = "Authentication Failed";
+            this.snackBar.open(this.errorMessage, "", { duration: 2000 });
           }
-          this.errorMessage = "Authentication Failed";
         });
     } else {
       this.errorMessage = "Form Data Invalid";
+      this.snackBar.open(this.errorMessage, "", { duration: 2000 });
     }
   }
 

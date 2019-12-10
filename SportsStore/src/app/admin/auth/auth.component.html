@@ -3,12 +3,6 @@
     <span>Sports Store Admin</span>
   </mat-toolbar>
 
-  <ng-container *ngIf="errorMessage?.length > 0">
-    <mat-toolbar color="warn" class="error-message-div">
-      <p>{{errorMessage}}</p>
-    </mat-toolbar>
-  </ng-container>
-
   <div class="auth-form">
     <form [formGroup]="authForm" (ngSubmit)="authenticate()">
       <!-- Username -->
@@ -29,7 +23,7 @@
 
       <div class='auth-form__buttons-area'>
         <button mat-raised-button color="" routerLink="/">Go Back</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!authForm.valid">Login</button>
+        <button mat-raised-button color="primary" type="submit">Login</button>
       </div>
     </form>
   </div>
