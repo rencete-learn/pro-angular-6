@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderRepositoryService } from 'src/app/model/order-repository.service';
 import { Order } from 'src/app/model/order.model';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 @Component({
@@ -13,14 +13,20 @@ export class OrderTableComponent implements OnInit {
   public includeShipped: boolean = false;
   public ds$: Observable<OrderDataSource[]>;
   public selectedId: number | null = null;
+  public includeShipped$: BehaviorSubject<boolean> = new BehaviorSubject(this.includeShipped);
 
   constructor(private repository: OrderRepositoryService) { }
 
-  ngOnInit() {
-    this.ds$ = this.repository.getOrders$().pipe(
-      map(this.filterOrders, this),
-      map(this.convertToDatasource, this)
-    );
+  ngOnInit() {    
+    this.ds$ = combineLatest(this.repository.getOrders$(), this.includeShipped$.asObservable())    
+      .pipe(
+        map(([orders, includeShipped]) => {
+          return orders.filter(order => includeShipped || !order.shipped);
+        }),
+        map(this.convertToDatasource, this)
+      );
+      
+    this.includeShipped$.next(this.includeShipped);
   }  
 
   markedShipped(order: Order) {
@@ -40,8 +46,8 @@ export class OrderTableComponent implements OnInit {
     }
   }
 
-  private filterOrders(orders: Order[], index: number): Order[] {
-    return orders.filter(order => this.includeShipped || !order.shipped);
+  emitNextIncludeShipped() {
+    this.includeShipped$.next(!this.includeShipped);
   }
 
   private convertToDatasource(orders: Order[], index: number): OrderDataSource[] {

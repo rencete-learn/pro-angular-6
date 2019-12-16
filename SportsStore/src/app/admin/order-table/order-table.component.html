@@ -1,5 +1,5 @@
 <div class="select-div">
-  <mat-checkbox [(ngModel)]="includeShipped">Display Shipped Orders</mat-checkbox>
+  <mat-checkbox [(ngModel)]="includeShipped" (click)="emitNextIncludeShipped()">Display Shipped Orders</mat-checkbox>
 </div>
 
 <div class="table-container full-width">
