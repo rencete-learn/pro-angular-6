@@ -51,6 +51,9 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="['name', 'zip', 'product', 'quantity', 'buttons']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['name', 'zip', 'product', 'quantity', 'buttons']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'zip', 'product', 'quantity', 'buttons']"
+      [ngClass]="{'collapsible': row.type == 'cart', 'height-0': row.id != selectedId && row.type == 'cart'}"
+      (click)="updateSelected(row.id)">
+    </tr>
   </table>
 </div>

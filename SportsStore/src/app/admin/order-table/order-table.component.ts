@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators'
 export class OrderTableComponent implements OnInit {
   public includeShipped: boolean = false;
   public ds$: Observable<OrderDataSource[]>;
+  public selectedId: number | null = null;
 
   constructor(private repository: OrderRepositoryService) { }
 
@@ -32,6 +33,14 @@ export class OrderTableComponent implements OnInit {
 
   deleteOrder(id: number) {
     this.repository.deleteOrder(id);
+  }
+
+  updateSelected(id: number) {
+    if (this.selectedId == id) {
+      this.selectedId = null;
+    } else {
+      this.selectedId = id;
+    }
   }
 
   convertToDatasource(orders: Order[], index: number): OrderDataSource[] {
