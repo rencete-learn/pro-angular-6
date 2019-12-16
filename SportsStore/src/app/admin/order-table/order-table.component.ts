@@ -18,13 +18,10 @@ export class OrderTableComponent implements OnInit {
 
   ngOnInit() {
     this.ds$ = this.repository.getOrders$().pipe(
-      map(this.convertToDatasource)
+      map(this.filterOrders, this),
+      map(this.convertToDatasource, this)
     );
-  }
-
-  getOrders(): Order[] {
-    return this.repository.getOrders().filter(order => this.includeShipped || !order.shipped );
-  }
+  }  
 
   markedShipped(order: Order) {
     order.shipped = true;
@@ -43,7 +40,11 @@ export class OrderTableComponent implements OnInit {
     }
   }
 
-  convertToDatasource(orders: Order[], index: number): OrderDataSource[] {
+  private filterOrders(orders: Order[], index: number): Order[] {
+    return orders.filter(order => this.includeShipped || !order.shipped);
+  }
+
+  private convertToDatasource(orders: Order[], index: number): OrderDataSource[] {
     let ds: OrderDataSource[] = [];
     orders.forEach(
       order => {
