@@ -69,6 +69,7 @@ export class CheckoutComponent implements OnInit {
     this.order.addr2 = this.controls.addr2.value;
     this.order.city = this.controls.city.value;
     this.order.state = this.controls.state.value;
+    this.order.zip = this.controls.zip.value;
     this.order.country = this.controls.country.value;
   }
 }
