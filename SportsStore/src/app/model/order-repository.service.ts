@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 
 import { Order } from "./order.model";
 import { RestDatasourceService } from './rest-datasource.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class OrderRepositoryService {
+  private orders$: Subject<Order[]> = new Subject();
+
   private orders: Order[] = [];
   private loaded: boolean = false;
 
@@ -13,7 +15,10 @@ export class OrderRepositoryService {
 
   loadOrders() {
     this.loaded = true;
-    this.ds.getOrders().subscribe(orders => this.orders = orders);
+    this.ds.getOrders().subscribe(orders => {
+      this.orders = orders;
+      this.orders$.next(this.orders);
+    });
   }
 
   getOrders(): Order[] {
@@ -21,6 +26,13 @@ export class OrderRepositoryService {
       this.loadOrders();
     }
     return this.orders;
+  }
+
+  getOrders$(): Observable<Order[]> {
+    if (!this.loaded) {
+      this.loadOrders();
+    }
+    return this.orders$.asObservable();
   }
 
   saveOrder(order: Order): Observable<Order> {

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth/auth.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuardService } from './auth-guard.service';
@@ -30,6 +30,7 @@ let routing = RouterModule.forChild([
     CommonModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     routing
   ],
   providers: [AuthGuardService],
