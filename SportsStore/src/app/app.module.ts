@@ -10,6 +10,8 @@ import { StoreComponent } from './store/store.component';
 import { CartDetailsComponent } from './store/cart-details.component';
 import { CheckoutComponent } from './store/checkout.component';
 import { StoreFirstGuardService } from './store-first-guard.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { StoreFirstGuardService } from './store-first-guard.service';
       { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuardService] },
       { path: "admin", loadChildren: "./admin/admin.module#AdminModule", canActivate: [StoreFirstGuardService] },
       { path: "**", redirectTo: "/store" }
-    ])
+    ]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StoreFirstGuardService // Allows URL guard to be injected. Note: there is no error msg but with error, if this is not added
