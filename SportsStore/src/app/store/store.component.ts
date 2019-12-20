@@ -38,7 +38,7 @@ export class StoreComponent implements OnInit {
     return this.repository.getCategories();
   }
 
-  changeCategory(cat: string) {
+  changeCategory(cat: string = null) {
     this.selectedCategory = cat ? cat : null;
   }
 
