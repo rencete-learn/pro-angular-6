@@ -68,8 +68,10 @@
     <button mat-flat-button color="primary" routerLink="/store">
       Continue Shopping
     </button>
-    <button mat-stroked-button color="basic" routerLink="/checkout">
-      Checkout
+    <button mat-stroked-button color="basic"
+      [disabled]="!connected || lineItems == 0"
+      routerLink="/checkout">
+      {{ connected ? "Checkout" : "Offline" }}
     </button>
   </div>
 </div>
